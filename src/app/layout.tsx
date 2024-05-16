@@ -1,6 +1,15 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import Image from 'next/image'
+import React from 'react'
+import logo from './images/logo.jpg'
+import img2 from './images/NoMan.png'
+import { Badge, Button } from '@mui/material'
+import {  Mail,   } from '@mui/icons-material'
+import LocalShippingIcon from '@mui/icons-material/LocalShipping';
 import "./globals.css";
+import DashboardPage from "./dashboard/page";
+import Link from "next/link";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -16,7 +25,34 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+      <div className=" bg-black ">
+   <div className="container ">
+    <div className="flex justify-between items-center px-4 py-3">
+      <div className="flex items-center space-x-3">
+  <Link href={'/'}><Image  className='w-[50px] h-[50px] rounded-full' src={logo}/></Link> 
+<Badge badgeContent={4} className='text-white' >
+  <LocalShippingIcon  />
+</Badge>
+<Badge badgeContent={4} className='text-white'>
+  <Mail  />
+</Badge>
+</div>
+<div className="flex items-center space-x-3">
+<Image  className='w-[50px] h-[50px] rounded-full' src={img2}/>
+  </div>
+    </div>
+   </div>
+   </div>
+<div className="container flex">
+<div className="w-[250px] bg-[#2F323A] h-[755px] ">
+<DashboardPage/>
+</div>
+<div className=" ml-10 mt-8 ">
+{children}
+</div>
+</div>
+       </body>
     </html>
   );
 }
